@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="login_as_other.UserSwitcher" owl="1">
+        <Dropdown class="'o_user_switcher d-none d-md-block pe-0'" togglerClass="'py-1 py-lg-0'">
+            <t t-set-slot="toggler">
+              <i class="fa fa-chevron-down"/>
+            </t>
+            <t t-foreach="users" t-as="user" t-key="user_index">
+                <DropdownItem onSelected="() => switchUser(user.id)">
+                  <div class="d-flex mx-1">
+                    <img class="rounded-circle o_user_avatar h-75 py-1" t-att-src="getAvatar(user.id)"
+                         t-att-alt="user.name"/>
+                    <span class="o_user_name d-none d-lg-block ms-1"><t t-esc="user.name"/></span>
+                  </div>
+                </DropdownItem>
+            </t>
+        </Dropdown>
+    </t>
+</templates>
